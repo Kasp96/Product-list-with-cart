@@ -9,14 +9,22 @@
 html,
 body {
 	min-height: 100vh;
-    font-family: var(--ff-primary);
-    background-color: #777;
+	font-family: var(--ff-primary);
 }
 
 html {
 	scroll-behavior: smooth;
 }
-
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	margin: 0;
+	padding: 0;
+}
 a {
 	text-decoration: none;
 }
@@ -38,4 +46,3 @@ ul,
 li {
 	list-style: none;
 }
-

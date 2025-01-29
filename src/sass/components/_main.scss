@@ -1,0 +1,44 @@
+.app {
+	.app-heading {
+		margin-bottom: 2rem;
+		font-size: var(--fs-40);
+		font-weight: 800;
+		color: var(--clr-Rose-700);
+	}
+	.product-card {
+		margin-bottom: 1.45rem;
+		.product-img-box {
+			margin-bottom: 2.5rem;
+			max-width: fit-content;
+
+			img {
+				border-radius: 10px;
+			}
+			.add-to-cart-btn {
+				padding: 11px 26px;
+				bottom: -1rem;
+				left: 50%;
+				transform: translateX(-50%);
+				background: var(--clr-white);
+				border: 1px solid var(--clr-Rose-400);
+				border-radius: 25px;
+				font-size: var(--fs-14);
+				font-weight: 600;
+			}
+		}
+		.product-info {
+			.product-category {
+				font-size: var(--fs-14);
+				color: var(--clr-Rose-400);
+			}
+			.product-name {
+				color: var(--clr-Rose-700);
+				font-weight: 600;
+			}
+			.price {
+				color: var(--clr-Red);
+				font-weight: 600;
+			}
+		}
+	}
+}
