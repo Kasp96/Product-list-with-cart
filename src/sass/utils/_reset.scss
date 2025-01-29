@@ -1,0 +1,41 @@
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body {
+	min-height: 100vh;
+    font-family: var(--ff-primary);
+    background-color: #777;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+a {
+	text-decoration: none;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+	font-family: inherit;
+}
+
+ul,
+li {
+	list-style: none;
+}
+
