@@ -1,4 +1,5 @@
 .app {
+	background-color: var(--clr-Rose-50);
 	.app-heading {
 		margin-bottom: 2rem;
 		font-size: var(--fs-40);
@@ -38,6 +39,26 @@
 			.price {
 				color: var(--clr-Red);
 				font-weight: 600;
+			}
+		}
+	}
+	.cart-panel {
+		background-color: var(--clr-white);
+		border-radius: 10px;
+
+		.cart-heading {
+			margin-bottom: 2.25rem;
+			color: var(--clr-Red);
+			font-weight: 700;
+		}
+		.cart-body {
+			.empty-cart-img {
+				margin-bottom: 1rem;
+			}
+			.cart-info {
+				font-size: var(--fs-14);
+				font-weight: 600;
+				color: var(--clr-Rose-500);
 			}
 		}
 	}
