@@ -25,10 +25,16 @@
             <source srcset="./images/image-waffle-tablet.jpg" media="(min-width: 768px)">
             <img src="./images/image-waffle-mobile.jpg" alt="Waffle with Berries">
           </picture>
-          <button class="add-to-cart-btn d-flex align-items-center gap-2 position-absolute"><img
+          <button class="product-btn add-to-cart-btn d-flex align-items-center gap-2 position-absolute d-non"><img
               src="../images/icon-add-to-cart.svg" alt="cart icon">
             Add
             to Cart</button>
+          <button
+            class="product-btn quantity-btn position-absolute d-flex justify-content-between align-items-center d-none">
+            <img src="../images/icon-decrement-quantity.svg" alt="reduce quantity button">
+            <span class="current-quantity">1</span>
+            <img src="../images/icon-increment-quantity.svg" alt="">
+          </button>
         </div>
         <div class="product-info">
           <h2 class="product-category mb-1">Waffle</h2>
@@ -157,7 +163,7 @@
             to Cart</button>
         </div>
         <div class="product-info">
-          <h2 class="product-category mb-1">Browwnie</h2>
+          <h2 class="product-category mb-1">Brownie</h2>
           <p class="product-name">Salted Caramel Brownie</p>
           <p class="price">$5.50</p>
         </div>
@@ -183,9 +189,55 @@
     </div>
     <div class="cart-panel p-4">
       <h2 class="cart-heading">Your Cart <span class="added-products-amount">(0)</span></h2>
-      <div class="cart-body d-flex flex-column align-items-center">
-        <img class="empty-cart-img" src="../images/illustration-empty-cart.svg" alt="empty-cart-image">
-        <p class="cart-info">Your added items will appear here</p>
+      <div class="cart-body d-flex flex-column align-items-start">
+        <!-- <img class="empty-cart-img" src="../images/illustration-empty-cart.svg" alt="empty-cart-image">
+        <p class="empty-cart-info">Your added items will appear here</p> -->
+        <div class="cart-item d-flex justify-content-between align-items-center w-100">
+          <div>
+            <h3 class="cart-item-name">Classic Tiramisu</h3>
+            <div class="cart-item-price-box d-flex gap-2">
+              <p class="cart-item-quantity me-2">1x</p>
+              <p class="cart-item-price">@ $5.50</p>
+              <p class="cart-item-total">$5.50</p>
+            </div>
+          </div>
+          <button class="cart-item-remove d-flex justify-content-center align-items-center"><img
+              src="../images/icon-remove-item.svg" alt="remove item icon"></button>
+        </div>
+        <div class="cart-item d-flex justify-content-between align-items-center w-100">
+          <div>
+            <h3 class="cart-item-name">Vanilla Bean Crème Brûlée</h3>
+            <div class="cart-item-price-box d-flex gap-2">
+              <p class="cart-item-quantity me-2">4x</p>
+              <p class="cart-item-price">@ $7.00</p>
+              <p class="cart-item-total">$28.00</p>
+            </div>
+          </div>
+          <button class="cart-item-remove d-flex justify-content-center align-items-center"><img
+              src="../images/icon-remove-item.svg" alt="remove item icon"></button>
+        </div>
+        <div class="cart-item d-flex justify-content-between align-items-center w-100">
+          <div>
+            <h3 class="cart-item-name">Vanilla Panna Cotta</h3>
+            <div class="cart-item-price-box d-flex gap-2">
+              <p class="cart-item-quantity me-2">2x</p>
+              <p class="cart-item-price">@ $6.50</p>
+              <p class="cart-item-total">$13.00</p>
+            </div>
+          </div>
+          <button class="cart-item-remove d-flex justify-content-center align-items-center"><img
+              src="../images/icon-remove-item.svg" alt="remove item icon"></button>
+        </div>
+
+        <div class="order-total d-flex justify-content-between w-100 align-items-center mt-2">
+          <p>Order Total</p>
+          <p class="total-costs">$46.50</p>
+        </div>
+        <p class="carbon-neutral d-flex justify-content-center align-items-center gap-1">
+          <img class="me-1" src="../images/icon-carbon-neutral.svg" alt="carbon neutral icon">
+          This is a<span>carbon-neutral</span>delivery
+        </p>
+        <div class="confirm-btn text-center w-100">Confirm Order</div>
       </div>
     </div>
   </div>
