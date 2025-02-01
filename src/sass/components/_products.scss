@@ -14,8 +14,8 @@
 			border-radius: 10px;
 		}
 		.product-btn {
-			padding: 11px 26px;
-			width: 158px;
+			padding: 12px;
+			width: 159px;
 			bottom: -1rem;
 			left: 50%;
 			transform: translateX(-50%);
@@ -26,7 +26,22 @@
 			font-weight: 600;
 		}
 		.quantity-btn {
+			padding-inline: 15px;
 			background-color: var(--clr-Red);
+			color: var(--clr-white);
+			border: none;
+
+			.icon-wrapper::after {
+				position: absolute;
+				content: '';
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				border: 1px solid var(--clr-white);
+				border-radius: 50%;
+				width: 17px;
+				height: 17px;
+			}
 		}
 	}
 	.product-info {

@@ -1,5 +1,7 @@
 @use '../utils/reset' as *;
 @use '../utils/variables' as *;
+@use '../utils/globals' as *;
 @use '../components/products' as *;
 @use '../components/cart' as *;
+@use '../components/order-confirmation' as *;
 @use '../utils/media' as *;

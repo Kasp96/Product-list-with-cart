@@ -1,0 +1,16 @@
+.bg-shadow {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+.buttons {
+	padding: 15px;
+	background-color: var(--clr-Red);
+	color: var(--clr-white);
+	border: none;
+	border-radius: 25px;
+	font-weight: 500;
+}
