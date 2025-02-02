@@ -15,9 +15,10 @@
 </head>
 
 <body>
-  <div class="bg-shadow z-0 d-none"></div>
-  <div class="app position-relative py-4 px-4 z-0">
-    <div class="order-confirmation z-1">
+  <div class="bg-shadow z-1 d-none"></div>
+  <div class="app-container position-relative z-0 d-flex flex-column">
+    <div class="app py-4 d-flex flex-column flex-xl-row gap-xl-4 justify-content-xl-center">
+      <div class="order-confirmation z-1 d-none">
     <img class="icon-confirmed" src="../images/icon-order-confirmed.svg" alt="confirmed order icon">
     <h2 class="confirmation-heading">Order Confirmed</h2>
     <p class="confirmation-text">We hope you enjoy the food!</p>
@@ -61,13 +62,15 @@
     </div>
     <button class="buttons new-order-btn w-100 mt-4">Start New Order</button>
 </div>
-    <h1 class="app-heading">Desserts</h1>
-    <div class="products-container">
-      <div class="product-card d-flex flex-column">
+      <div>
+        <h1 class="app-heading">Desserts</h1>
+        <div
+          class="products-container d-flex justify-content-center justify-content-xl-start flex-wrap gap-sm-4 mx-auto mx-xl-star">
+          <div class="product-card col-12 col-sm-6 col-md-4 d-flex flex-column">
   <div class="product-img-box position-relative">
     <picture>
-      <source srcset="./images/image-waffle-desktop.jpg" media="(min-width: 1024px)">
-      <source srcset="./images/image-waffle-tablet.jpg" media="(min-width: 768px)">
+      <source srcset="./images/image-waffle-desktop.jpg" media="(min-width: 1200px)">
+      <source srcset="./images/image-waffle-tablet.jpg" media="(min-width: 576px)">
       <img src="./images/image-waffle-mobile.jpg" alt="Waffle with Berries">
     </picture>
     <button
@@ -89,11 +92,11 @@
     <p class="price">$6.50</p>
   </div>
 </div>
-<div class="product-card d-flex flex-column">
+<div class="product-card col-12 col-sm-6 col-md-4  d-flex flex-column">
   <div class="product-img-box position-relative">
     <picture>
-      <source srcset="./images/image-creme-brulee-desktop.jpg" media="(min-width: 1024px)">
-      <source srcset="./images/image-creme-brulee-tablet.jpg" media="(min-width: 768px)">
+      <source srcset="./images/image-creme-brulee-desktop.jpg" media="(min-width: 1200px)">
+      <source srcset="./images/image-creme-brulee-tablet.jpg" media="(min-width: 576px)">
       <img src="./images/image-creme-brulee-mobile.jpg" alt="Waffle with Berries">
     </picture>
     <button
@@ -115,11 +118,11 @@
     <p class="price">$7.00</p>
   </div>
 </div>
-<div class="product-card d-flex flex-column">
+<div class="product-card col-12 col-sm-6 col-md-4  d-flex flex-column">
   <div class="product-img-box position-relative">
     <picture>
-      <source srcset="./images/image-macaron-desktop.jpg" media="(min-width: 1024px)">
-      <source srcset="./images/image-macaron-tablet.jpg" media="(min-width: 768px)">
+      <source srcset="./images/image-macaron-desktop.jpg" media="(min-width: 1200px)">
+      <source srcset="./images/image-macaron-tablet.jpg" media="(min-width: 576px)">
       <img src="./images/image-macaron-mobile.jpg" alt="Waffle with Berries">
     </picture>
     <button
@@ -141,11 +144,11 @@
     <p class="price">$8.00</p>
   </div>
 </div>
-<div class="product-card d-flex flex-column">
+<div class="product-card col-12 col-sm-6 col-md-4  d-flex flex-column">
   <div class="product-img-box position-relative">
     <picture>
-      <source srcset="./images/image-tiramisu-desktop.jpg" media="(min-width: 1024px)">
-      <source srcset="./images/image-tiramisu-tablet.jpg" media="(min-width: 768px)">
+      <source srcset="./images/image-tiramisu-desktop.jpg" media="(min-width: 1200px)">
+      <source srcset="./images/image-tiramisu-tablet.jpg" media="(min-width: 576px)">
       <img src="./images/image-tiramisu-mobile.jpg" alt="Waffle with Berries">
     </picture>
     <button
@@ -167,11 +170,11 @@
     <p class="price">$5.50</p>
   </div>
 </div>
-<div class="product-card d-flex flex-column">
+<div class="product-card col-12 col-sm-6 col-md-4  d-flex flex-column">
   <div class="product-img-box position-relative">
     <picture>
-      <source srcset="./images/image-baklava-desktop.jpg" media="(min-width: 1024px)">
-      <source srcset="./images/image-baklava-tablet.jpg" media="(min-width: 768px)">
+      <source srcset="./images/image-baklava-desktop.jpg" media="(min-width: 1200px)">
+      <source srcset="./images/image-baklava-tablet.jpg" media="(min-width: 576px)">
       <img src="./images/image-baklava-mobile.jpg" alt="Waffle with Berries">
     </picture>
     <button
@@ -193,11 +196,11 @@
     <p class="price">$4.00</p>
   </div>
 </div>
-<div class="product-card d-flex flex-column">
+<div class="product-card col-12 col-sm-6 col-md-4  d-flex flex-column">
   <div class="product-img-box position-relative">
     <picture>
-      <source srcset="./images/image-meringue-desktop.jpg" media="(min-width: 1024px)">
-      <source srcset="./images/image-meringue-tablet.jpg" media="(min-width: 768px)">
+      <source srcset="./images/image-meringue-desktop.jpg" media="(min-width: 1200px)">
+      <source srcset="./images/image-meringue-tablet.jpg" media="(min-width: 576px)">
       <img src="./images/image-meringue-mobile.jpg" alt="Waffle with Berries">
     </picture>
     <button
@@ -219,11 +222,11 @@
     <p class="price">$5.00</p>
   </div>
 </div>
-<div class="product-card d-flex flex-column">
+<div class="product-card col-12 col-sm-6 col-md-4  d-flex flex-column">
   <div class="product-img-box position-relative">
     <picture>
-      <source srcset="./images/image-cake-desktop.jpg" media="(min-width: 1024px)">
-      <source srcset="./images/image-cake-tablet.jpg" media="(min-width: 768px)">
+      <source srcset="./images/image-cake-desktop.jpg" media="(min-width: 1200px)">
+      <source srcset="./images/image-cake-tablet.jpg" media="(min-width: 576px)">
       <img src="./images/image-cake-mobile.jpg" alt="Waffle with Berries">
     </picture>
     <button
@@ -245,11 +248,11 @@
     <p class="price">$4.50</p>
   </div>
 </div>
-<div class="product-card d-flex flex-column">
+<div class="product-card col-12 col-sm-6 col-md-4  d-flex flex-column">
   <div class="product-img-box position-relative">
     <picture>
-      <source srcset="./images/image-brownie-desktop.jpg" media="(min-width: 1024px)">
-      <source srcset="./images/image-brownie-tablet.jpg" media="(min-width: 768px)">
+      <source srcset="./images/image-brownie-desktop.jpg" media="(min-width: 1200px)">
+      <source srcset="./images/image-brownie-tablet.jpg" media="(min-width: 576px)">
       <img src="./images/image-brownie-mobile.jpg" alt="Waffle with Berries">
     </picture>
     <button
@@ -271,11 +274,11 @@
     <p class="price">$5.50</p>
   </div>
 </div>
-<div class="product-card d-flex flex-column">
+<div class="product-card col-12 col-sm-6 col-md-4  d-flex flex-column">
   <div class="product-img-box position-relative">
     <picture>
-      <source srcset="./images/image-panna-cotta-desktop.jpg" media="(min-width: 1024px)">
-      <source srcset="./images/image-panna-cotta-tablet.jpg" media="(min-width: 768px)">
+      <source srcset="./images/image-panna-cotta-desktop.jpg" media="(min-width: 1200px)">
+      <source srcset="./images/image-panna-cotta-tablet.jpg" media="(min-width: 576px)">
       <img src="./images/image-panna-cotta-mobile.jpg" alt="Waffle with Berries">
     </picture>
     <button
@@ -297,12 +300,15 @@
     <p class="price">$6.50</p>
   </div>
 </div>
-    </div>
-    <div class="cart-panel p-4">
+        </div>
+      </div>
+      <div><div class="cart-panel p-4 m-4 mx-auto">
     <h2 class="cart-heading">Your Cart <span class="added-products-amount">(0)</span></h2>
-    <div class="cart-body d-flex flex-column align-items-start">
-        <!-- <img class="empty-cart-img" src="../images/illustration-empty-cart.svg" alt="empty-cart-image">
-      <p class="empty-cart-info">Your added items will appear here</p> -->
+    <!-- <div class="empty-cart d-flex flex-column align-items-center">
+        <img class="empty-cart-img" src="../images/illustration-empty-cart.svg" alt="empty-cart-image">
+        <p class="empty-cart-info">Your added items will appear here</p>
+    </div> -->
+     <div class="cart-body d-flex flex-column align-items-start">
         <div class="cart-item d-flex justify-content-between align-items-center w-100">
             <div>
                 <h3 class="cart-item-name">Classic Tiramisu</h3>
@@ -339,7 +345,6 @@
             <button class="cart-item-remove position-relative border-0 bg-white p-2"><img
                     src="../images/icon-remove-item.svg" alt="remove item icon"></button>
         </div>
-
         <div class="order-total d-flex justify-content-between w-100 align-items-center mt-2">
             <p>Order Total</p>
             <p class="total-costs">$46.50</p>
@@ -349,9 +354,11 @@
             This is a<span>carbon-neutral</span>delivery
         </p>
         <button class="buttons confirm-btn text-center w-100">Confirm Order</button>
+    </div> 
+</div></div>
     </div>
-</div>
   </div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
