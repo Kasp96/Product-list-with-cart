@@ -4,7 +4,7 @@
 	font-weight: 800;
 	color: var(--clr-Rose-700);
 }
-.products-container {
+.products-list {
 	width: 100%;
 	.product-card {
 		margin-bottom: 1.45rem;
@@ -16,6 +16,9 @@
 
 			img {
 				border-radius: 10px;
+			}
+			.add-to-cart-btn {
+				display: flex;
 			}
 			.product-btn {
 				padding: 10px;
@@ -30,6 +33,8 @@
 				font-weight: 600;
 			}
 			.quantity-btn {
+				display: none;
+				padding: 11px;
 				padding-inline: 15px;
 				background-color: var(--clr-Red);
 				color: var(--clr-white);
