@@ -2,9 +2,8 @@ const productsList = document.querySelector('.products-list');
 const cartPanel = document.querySelector('.cart-panel');
 const emptyCart = document.querySelector('.empty-cart');
 const filledCart = document.querySelector('.cart-body');
-const addedProductsAmount = document.querySelector(
-	'.added-products-amount'
-).textContent;
+const addedProductsAmount = document.querySelector('.added-products-amount');
+let count = 0;
 
 productsList.addEventListener('click', (e) => {
 	if (e.target.classList.contains('add-to-cart-btn')) {
@@ -46,6 +45,10 @@ productsList.addEventListener('click', (e) => {
         <button class="cart-item-remove position-relative border-0 bg-white p-2"><img
             src="../images/icon-remove-item.svg" alt="remove item icon"></button>`;
 		filledCart.appendChild(newCartItem);
+		cartSummarize();
+		count++;
+		addedProductsAmount.textContent = count;
+		console.log(addedProductsAmount.textContent);
 
 		const cartAmount = newCartItem.querySelector('.cart-item-quantity');
 		const cartTotalPriceElement = newCartItem.querySelector('.cart-item-total');
@@ -58,6 +61,9 @@ productsList.addEventListener('click', (e) => {
 				productAmountElement.textContent = newAmount;
 				cartAmount.textContent = newAmount + 'x';
 				cartTotalPriceElement.textContent = (itemPrice * newAmount).toFixed(2);
+				count++;
+				addedProductsAmount.textContent = count;
+				console.log(addedProductsAmount.textContent);
 			});
 
 		const reduceQuantityBtn = quantityBtn
@@ -72,12 +78,49 @@ productsList.addEventListener('click', (e) => {
 					cartTotalPriceElement.textContent = (itemPrice * newAmount).toFixed(
 						2
 					);
+					count--;
+					addedProductsAmount.textContent = count;
+					console.log(addedProductsAmount.textContent);
 				}
 			});
 		const removeItemBtn = newCartItem
 			.querySelector('.cart-item-remove')
 			.addEventListener('click', () => {
+				const adjustAmount = parseInt(
+					newCartItem.querySelector('.cart-item-quantity').textContent
+				);
+				addedProductsAmount.textContent =
+					addedProductsAmount.textContent - adjustAmount;
+
+				const productCard = [
+					...document.querySelectorAll('.product-card'),
+				].find(
+					(card) => card.querySelector('.product-name').textContent === itemName
+				);
+				const addToCartBtn = productCard.querySelector('.add-to-cart-btn');
+				const quantityBtn = productCard.querySelector('.quantity-btn');
+				const quantity = quantityBtn.querySelector('.product-quantity');
+				quantity.textContent = 1;
+				addToCartBtn.style.display = 'flex';
+				quantityBtn.style.display = 'none';
 				newCartItem.remove();
+				console.log(addedProductsAmount.textContent);
 			});
 	}
 });
+
+const cartSummarize = () => {
+	const filledCartSummarize = document.createElement('div');
+	filledCartSummarize.classList.add('filled-cart-summarize');
+	filledCartSummarize.innerHTML = `
+	<div class="order-total d-flex justify-content-between w-100 align-items-center mt-2">
+                <p>Order Total</p>
+                <p class="total-costs">$46.50</p>
+            </div>
+            <p class="carbon-neutral d-flex justify-content-center align-items-center gap-1">
+                <img class="me-1" src="../images/icon-carbon-neutral.svg" alt="carbon neutral icon">
+                This is a<span>carbon-neutral</span>delivery
+            </p>
+            <button class="buttons confirm-btn text-center w-100">Confirm Order</button>`;
+	filledCart.appendChild(filledCartSummarize);
+};

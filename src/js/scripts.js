@@ -1,6 +1,6 @@
 const productsList = document.querySelector('.products-list');
 
-const fetchAPI = async (itemName) => {
+const fetchAPI = async () => {
 	try {
 		const URL = '/assets/data.json';
 		const res = await fetch(URL);
