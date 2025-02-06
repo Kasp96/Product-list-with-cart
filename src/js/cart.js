@@ -4,6 +4,7 @@ const emptyCart = document.querySelector('.empty-cart');
 const filledCart = document.querySelector('.cart-body');
 const addedProductsAmount = document.querySelector('.added-products-amount');
 let count = 0;
+let priceSummarize = [];
 
 productsList.addEventListener('click', (e) => {
 	if (e.target.classList.contains('add-to-cart-btn')) {
@@ -45,7 +46,9 @@ productsList.addEventListener('click', (e) => {
         <button class="cart-item-remove position-relative border-0 bg-white p-2"><img
             src="../images/icon-remove-item.svg" alt="remove item icon"></button>`;
 		filledCart.appendChild(newCartItem);
-		cartSummarize();
+		// priceSummarize.push(finalProductPrice);
+		// console.log(priceSummarize);
+		// cartSummarize(priceSummarize);
 		count++;
 		addedProductsAmount.textContent = count;
 		console.log(addedProductsAmount.textContent);
@@ -89,8 +92,8 @@ productsList.addEventListener('click', (e) => {
 				const adjustAmount = parseInt(
 					newCartItem.querySelector('.cart-item-quantity').textContent
 				);
-				addedProductsAmount.textContent =
-					addedProductsAmount.textContent - adjustAmount;
+				count -= adjustAmount;
+				addedProductsAmount.textContent = count;
 
 				const productCard = [
 					...document.querySelectorAll('.product-card'),
@@ -109,18 +112,30 @@ productsList.addEventListener('click', (e) => {
 	}
 });
 
-const cartSummarize = () => {
-	const filledCartSummarize = document.createElement('div');
-	filledCartSummarize.classList.add('filled-cart-summarize');
-	filledCartSummarize.innerHTML = `
+const cartSummarize = (priceSummarize) => {
+	const sum = priceSummarize.reduce((acc, num) => acc + num, 0);
+
+	if (cartPanel.querySelector('.filled-cart-summarize')) {
+		return;
+	} else {
+		const filledCartSummarize = document.createElement('div');
+		filledCartSummarize.classList.add(
+			'filled-cart-summarize',
+			'd-flex',
+			'flex-column',
+			'justify-content-center',
+			'align-items-center'
+		);
+		filledCartSummarize.innerHTML = `
 	<div class="order-total d-flex justify-content-between w-100 align-items-center mt-2">
                 <p>Order Total</p>
-                <p class="total-costs">$46.50</p>
+                <p class="total-costs">$${sum}</p>
             </div>
             <p class="carbon-neutral d-flex justify-content-center align-items-center gap-1">
                 <img class="me-1" src="../images/icon-carbon-neutral.svg" alt="carbon neutral icon">
                 This is a<span>carbon-neutral</span>delivery
             </p>
             <button class="buttons confirm-btn text-center w-100">Confirm Order</button>`;
-	filledCart.appendChild(filledCartSummarize);
+		cartPanel.appendChild(filledCartSummarize);
+	}
 };
