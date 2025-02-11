@@ -6,7 +6,7 @@ const addedProductsAmount = document.querySelector('.added-products-amount');
 let count = 0;
 let priceSummarize = [];
 
-productsList.addEventListener('click', (e) => {
+export const handleAddToCart = (e) => {
 	if (e.target.classList.contains('add-to-cart-btn')) {
 		const addToCartBtn = e.target;
 		const quantityBtn = e.target.nextElementSibling;
@@ -24,7 +24,7 @@ productsList.addEventListener('click', (e) => {
 			.closest('.product-card')
 			.querySelector('.price').textContent;
 		let itemPrice = parseFloat(itemPriceElement.slice(1));
-		let finalProductPrice = (itemPrice * amount).toFixed(2);
+		let finalProductPrice = parseFloat((itemPrice * amount).toFixed(2));
 
 		const newCartItem = document.createElement('div');
 		newCartItem.classList.add(
@@ -36,64 +36,72 @@ productsList.addEventListener('click', (e) => {
 		);
 
 		newCartItem.innerHTML = `<div>
-        <h3 class="cart-item-name">${itemName}</h3>
-        <div class="cart-item-price-box d-flex gap-2">
-            <p class="cart-item-quantity me-2">${amount}x</p>
-            <p class="cart-item-price">@ ${itemPriceElement}</p>
-            <p class="cart-item-total">$${finalProductPrice}</p>
-        </div>
-        </div>
-        <button class="cart-item-remove position-relative border-0 bg-white p-2"><img
-            src="../images/icon-remove-item.svg" alt="remove item icon"></button>`;
+            <h3 class="cart-item-name">${itemName}</h3>
+            <div class="cart-item-price-box d-flex gap-2">
+                <p class="cart-item-quantity me-2">${amount}x</p>
+                <p class="cart-item-price">@ ${itemPriceElement}</p>
+                <p class="cart-item-total">$${finalProductPrice.toFixed(2)}</p>
+            </div>
+            </div>
+            <button class="cart-item-remove position-relative border-0 bg-white p-2"><img
+                src="../images/icon-remove-item.svg" alt="remove item icon"></button>`;
 		filledCart.appendChild(newCartItem);
-		// priceSummarize.push(finalProductPrice);
-		// console.log(priceSummarize);
-		// cartSummarize(priceSummarize);
-		count++;
+
+		priceSummarize.push({ name: itemName, price: finalProductPrice });
+
+		updateCartSummary();
+
+		count += amount;
 		addedProductsAmount.textContent = count;
-		console.log(addedProductsAmount.textContent);
 
 		const cartAmount = newCartItem.querySelector('.cart-item-quantity');
 		const cartTotalPriceElement = newCartItem.querySelector('.cart-item-total');
-		let newAmount = productAmountElement.textContent;
 
-		const increaseQuantityBtn = quantityBtn
+		quantityBtn
 			.querySelector('.increase-amount-wrapper')
 			.addEventListener('click', () => {
-				newAmount = ++amount;
-				productAmountElement.textContent = newAmount;
-				cartAmount.textContent = newAmount + 'x';
-				cartTotalPriceElement.textContent = (itemPrice * newAmount).toFixed(2);
+				amount++;
+				productAmountElement.textContent = amount;
+				cartAmount.textContent = amount + 'x';
+
+				let newTotalPrice = parseFloat((itemPrice * amount).toFixed(2));
+				cartTotalPriceElement.textContent = `$${newTotalPrice}`;
+
+				updatePriceSummarize(itemName, newTotalPrice);
+				updateCartSummary();
+
 				count++;
 				addedProductsAmount.textContent = count;
-				console.log(addedProductsAmount.textContent);
 			});
 
-		const reduceQuantityBtn = quantityBtn
+		quantityBtn
 			.querySelector('.reduce-amount-wrapper')
 			.addEventListener('click', () => {
-				if (amount === 1) {
-					return;
-				} else {
-					newAmount = --amount;
-					productAmountElement.textContent = newAmount;
-					cartAmount.textContent = newAmount + 'x';
-					cartTotalPriceElement.textContent = (itemPrice * newAmount).toFixed(
-						2
-					);
-					count--;
-					addedProductsAmount.textContent = count;
-					console.log(addedProductsAmount.textContent);
-				}
+				if (amount === 1) return;
+
+				amount--;
+				productAmountElement.textContent = amount;
+				cartAmount.textContent = amount + 'x';
+
+				let newTotalPrice = parseFloat((itemPrice * amount).toFixed(2));
+				cartTotalPriceElement.textContent = `$${newTotalPrice}`;
+
+				updatePriceSummarize(itemName, newTotalPrice);
+				updateCartSummary();
+
+				count--;
+				addedProductsAmount.textContent = count;
 			});
-		const removeItemBtn = newCartItem
+
+		newCartItem
 			.querySelector('.cart-item-remove')
 			.addEventListener('click', () => {
-				const adjustAmount = parseInt(
-					newCartItem.querySelector('.cart-item-quantity').textContent
-				);
+				const adjustAmount = parseInt(cartAmount.textContent);
 				count -= adjustAmount;
 				addedProductsAmount.textContent = count;
+
+				removeFromPriceSummarize(itemName);
+				updateCartSummary();
 
 				const productCard = [
 					...document.querySelectorAll('.product-card'),
@@ -107,18 +115,61 @@ productsList.addEventListener('click', (e) => {
 				addToCartBtn.style.display = 'flex';
 				quantityBtn.style.display = 'none';
 				newCartItem.remove();
-				console.log(addedProductsAmount.textContent);
+				if (addedProductsAmount.innerHTML === '0') {
+					emptyCart.style.display = 'flex';
+					filledCart.style.display = 'none';
+					const filledCartSummarize = document.querySelector(
+						'.filled-cart-summarize'
+					);
+					if (filledCartSummarize) {
+						filledCartSummarize.style.display = 'none';
+					}
+				}
 			});
 	}
-});
+};
 
-const cartSummarize = (priceSummarize) => {
-	const sum = priceSummarize.reduce((acc, num) => acc + num, 0);
+productsList.addEventListener('click', handleAddToCart);
 
-	if (cartPanel.querySelector('.filled-cart-summarize')) {
+const updatePriceSummarize = (productName, newTotalPrice) => {
+	let index = priceSummarize.findIndex((item) => item.name === productName);
+	if (index !== -1) {
+		priceSummarize[index].price = newTotalPrice;
+	}
+};
+
+const removeFromPriceSummarize = (productName) => {
+	priceSummarize = priceSummarize.filter((item) => item.name !== productName);
+};
+
+const updateCartSummary = () => {
+	if (priceSummarize.length === 0) {
+		cartSummarize('0.00');
 		return;
-	} else {
-		const filledCartSummarize = document.createElement('div');
+	}
+
+	let sum = priceSummarize
+		.reduce((acc, item) => acc + (parseFloat(item.price) || 0), 0)
+		.toFixed(2);
+	cartSummarize(sum);
+};
+
+const cartSummarize = (sum) => {
+	let totalCostsElement = cartPanel.querySelector('.total-costs');
+	let filledCartSummarize = document.querySelector('.filled-cart-summarize');
+
+	if (priceSummarize.length === 0) {
+		emptyCart.style.display = 'flex';
+		filledCart.style.display = 'none';
+
+		if (filledCartSummarize) {
+			filledCartSummarize.remove();
+		}
+		return;
+	}
+	let confirmBtn;
+	if (!filledCartSummarize) {
+		filledCartSummarize = document.createElement('div');
 		filledCartSummarize.classList.add(
 			'filled-cart-summarize',
 			'd-flex',
@@ -126,8 +177,9 @@ const cartSummarize = (priceSummarize) => {
 			'justify-content-center',
 			'align-items-center'
 		);
+
 		filledCartSummarize.innerHTML = `
-	<div class="order-total d-flex justify-content-between w-100 align-items-center mt-2">
+            <div class="order-total d-flex justify-content-between w-100 align-items-center mt-2">
                 <p>Order Total</p>
                 <p class="total-costs">$${sum}</p>
             </div>
@@ -136,6 +188,13 @@ const cartSummarize = (priceSummarize) => {
                 This is a<span>carbon-neutral</span>delivery
             </p>
             <button class="buttons confirm-btn text-center w-100">Confirm Order</button>`;
+
 		cartPanel.appendChild(filledCartSummarize);
+	} else {
+		totalCostsElement.textContent = `$${sum}`;
 	}
+
+	emptyCart.style.display = 'none';
+	filledCart.style.display = 'flex';
+	filledCartSummarize.style.display = 'flex';
 };
