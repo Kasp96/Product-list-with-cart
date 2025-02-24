@@ -1,6 +1,6 @@
 const productsList = document.querySelector('.products-list');
 
-const fetchAPI = async () => {
+export const fetchAPI = async () => {
 	try {
 		const URL = '/assets/data.json';
 		const res = await fetch(URL);
@@ -22,13 +22,16 @@ const fetchAPI = async () => {
 			const imgMobile = item.image.mobile;
 			const imgTablet = item.image.tablet;
 			const imgDesktop = item.image.desktop;
+			const imgThumbnail = item.image.thumbnail;
 
-			newItem.innerHTML = `<div class="product-img-box position-relative">
+			newItem.innerHTML = `
+  <div class="product-img-box position-relative">
     <picture>
       <source srcset="${imgDesktop}" media="(min-width: 1200px)">
       <source srcset="${imgTablet}" media="(min-width: 576px)">
-      <img src="${imgMobile}" alt="Waffle with Berries">
+      <img class="product-image" src="${imgMobile}" alt="${itemName}">
     </picture>
+    <img class="product-thumbnail d-none" src="${imgThumbnail}" alt="Thumbnail of ${itemName}">
     <button
       class="product-btn add-to-cart-btn justify-content-center align-items-center gap-2 position-absolute">
       <img class="pe-none" src="../images/icon-add-to-cart.svg" alt="cart icon">
